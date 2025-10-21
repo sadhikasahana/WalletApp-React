@@ -1,5 +1,8 @@
 {
   "extends": "@react-native/typescript-config",
-  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "typeRoots": ["./typings", "./node_modules/@types"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "./typings"],
   "exclude": ["**/node_modules", "**/Pods"]
 }
