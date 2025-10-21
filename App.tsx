@@ -10,6 +10,8 @@ import ExpenseScreen from './src/screens/ExpenseScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
 import RecurringScreen from './src/screens/RecurringScreen';
 import ReminderScreen from './src/screens/ReminderScreen';
+import { configureNotifications } from './src/utils/notification';
+import { useEffect } from 'react';
 
 const Stack = createNativeStackNavigator();
 function AppNavigator() {
@@ -36,6 +38,11 @@ function AppNavigator() {
 }
 
 export default function App() {
+
+  useEffect(() => {
+    configureNotifications();
+  });
+
   return (
     <AuthProvider>
       <NavigationContainer>
