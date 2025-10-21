@@ -9,6 +9,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import ExpenseScreen from './src/screens/ExpenseScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
 import RecurringScreen from './src/screens/RecurringScreen';
+import ReminderScreen from './src/screens/ReminderScreen';
 
 const Stack = createNativeStackNavigator();
 function AppNavigator() {
@@ -27,6 +28,7 @@ function AppNavigator() {
           <Stack.Screen name="Expense" component={ExpenseScreen} />
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Recurring" component={RecurringScreen} />
+          <Stack.Screen name="Reminder" component={ReminderScreen} />
         </>
       )}
     </Stack.Navigator>
