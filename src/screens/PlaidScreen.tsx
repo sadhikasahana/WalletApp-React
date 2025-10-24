@@ -6,6 +6,7 @@ import { BASE_URL } from "../services/api";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
+import * as Keychain from 'react-native-keychain';
 
 type PlaidScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Plaid'>;
 
@@ -58,6 +59,7 @@ const PlaidScreen = () => {
                 throw new Error('Failed to exchange public token');
             }
             const data = await res.json();
+            await Keychain.setGenericPassword('plaid', data.access_token);
             navigation.navigate('Transactions', { accessToken: data.access_token });
             Alert.alert('Success', 'Bank account linked successfully');
             console.log('Exchange public token successful:', data);

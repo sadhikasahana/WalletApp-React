@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { View, Text, Button, FlatList, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import { fetchPlaidTransactions } from '../services/api';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
+import * as Keychain from 'react-native-keychain';
 
 type TransactionsScreenRouteProp = RouteProp<RootStackParamList, 'Transactions'>;
 
 const TransactionsScreen = ({ route }: { route: TransactionsScreenRouteProp }) => {
     const [transactions, setTransactions] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
-    const { accessToken } = route.params;
+    const [accessToken, setAccessToken] = useState(route.params?.accessToken);
+
+    useEffect(() => {
+        if (!accessToken) {
+            Keychain.getGenericPassword().then(credentials => {
+                if (credentials) setAccessToken(credentials.password);
+            }).catch(error => {
+                Alert.alert('Error', 'Failed to retrieve access token');
+                console.error('Keychain error:', error);
+            });
+        }
+    }, []
+    );
 
     const handleFetchTransactions = async () => {
         setLoading(true);
