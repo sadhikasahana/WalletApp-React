@@ -80,3 +80,24 @@ export const fetchPlaidTransactions = async (
   });
   return res.json();
 }
+
+export const setSpendingGoal = async (
+  mobile: string,
+  month: string,
+  amount: number
+) => {
+  const res = await fetch(`${BASE_URL}/goals/set`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ mobile, month, amount }),
+  });
+  return res.json();
+};
+
+export const getSpendingGoal = async (
+  mobile: string,
+  month: string
+) => {
+  const res = await fetch(`${BASE_URL}/goals/get/${mobile}/${month}`);
+  return res.json();
+};

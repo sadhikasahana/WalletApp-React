@@ -19,6 +19,9 @@ app.use('/api/recurring', recurringRoutes);
 const plaidRoutes = require('./routes/plaid');
 app.use('/api/plaid', plaidRoutes);
 
+const goalRoutes = require('./routes/goal');
+app.use('/api/goals', goalRoutes);
+
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 

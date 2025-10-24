@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import PlaidScreen from './src/screens/PlaidScreen';
 import TransactionsScreen from './src/screens/TransactionsScreen';
 import { RootStackParamList } from './src/navigation/types';
+import GoalScreen from './src/screens/GoalScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -37,6 +38,7 @@ function AppNavigator() {
           <Stack.Screen name="Reminder" component={ReminderScreen} />
           <Stack.Screen name="Plaid" component={PlaidScreen} />
           <Stack.Screen name="Transactions" component={TransactionsScreen} />
+          <Stack.Screen name="Goal" component={GoalScreen} />
         </>
       )}
     </Stack.Navigator>
