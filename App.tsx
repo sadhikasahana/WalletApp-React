@@ -12,7 +12,6 @@ import RecurringScreen from './src/screens/RecurringScreen';
 import ReminderScreen from './src/screens/ReminderScreen';
 import { configureNotifications } from './src/utils/notification';
 import { useEffect } from 'react';
-import ImportSmsScreen from './src/screens/ImportSmsScreen';
 
 const Stack = createNativeStackNavigator();
 function AppNavigator() {
@@ -32,7 +31,6 @@ function AppNavigator() {
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Recurring" component={RecurringScreen} />
           <Stack.Screen name="Reminder" component={ReminderScreen} />
-          <Stack.Screen name="ImportSms" component={ImportSmsScreen} />
         </>
       )}
     </Stack.Navigator>

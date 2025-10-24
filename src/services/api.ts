@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.10.34:5000/api'; 
+export const BASE_URL = 'http://192.168.10.34:5000/api'; 
 
 export const register = async (mobile: string, email: string, mpin: string) => {
     const res = await fetch(`${BASE_URL}/auth/register`, {

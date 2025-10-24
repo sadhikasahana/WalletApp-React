@@ -16,6 +16,9 @@ app.use('/api/limits', limitRoutes);
 const recurringRoutes = require('./routes/recurring');
 app.use('/api/recurring', recurringRoutes);
 
+const plaidRoutes = require('./routes/plaid');
+app.use('/api/plaid', plaidRoutes);
+
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
