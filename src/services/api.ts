@@ -101,3 +101,7 @@ export const getSpendingGoal = async (
   const res = await fetch(`${BASE_URL}/goals/get/${mobile}/${month}`);
   return res.json();
 };
+
+export const getExpenseCsvUrl = (mobile: string) => {
+  `${BASE_URL}/export/csv/${mobile}`;
+}

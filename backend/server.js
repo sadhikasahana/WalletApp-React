@@ -22,6 +22,9 @@ app.use('/api/plaid', plaidRoutes);
 const goalRoutes = require('./routes/goal');
 app.use('/api/goals', goalRoutes);
 
+const exportRoutes = require('./routes/export');
+app.use('/api/export', exportRoutes);
+
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 

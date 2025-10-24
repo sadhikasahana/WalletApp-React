@@ -8,6 +8,7 @@ export type RootStackParamList = {
     Recurring: undefined;
     Reminder: undefined;
     Goal: undefined;
+    Export: undefined;
     Plaid: undefined;
     Transactions: { accessToken: string  };
 }

@@ -16,6 +16,7 @@ import PlaidScreen from './src/screens/PlaidScreen';
 import TransactionsScreen from './src/screens/TransactionsScreen';
 import { RootStackParamList } from './src/navigation/types';
 import GoalScreen from './src/screens/GoalScreen';
+import ExportScreen from './src/screens/ExportScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -39,6 +40,7 @@ function AppNavigator() {
           <Stack.Screen name="Plaid" component={PlaidScreen} />
           <Stack.Screen name="Transactions" component={TransactionsScreen} />
           <Stack.Screen name="Goal" component={GoalScreen} />
+          <Stack.Screen name="Export" component={ExportScreen} />
         </>
       )}
     </Stack.Navigator>
