@@ -3,11 +3,17 @@ import { View, Button, ActivityIndicator, Alert } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 import { create, open, LinkSuccess, LinkExit } from 'react-native-plaid-link-sdk';
 import { BASE_URL } from "../services/api";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/types';
+
+type PlaidScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Plaid'>;
 
 const PlaidScreen = () => {
     const { user } = useContext(AuthContext);
     const [linkToken, setLinkToken] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const navigation = useNavigation<PlaidScreenNavigationProp>();
 
     useEffect(() => {
         const fetchLinkToken = async () => {
@@ -46,12 +52,13 @@ const PlaidScreen = () => {
             const res = await fetch(`${BASE_URL}/plaid/exchange_public_token`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ public_token: success.publicToken, userId: user }),
+                body: JSON.stringify({ public_token: success.publicToken }),
             });
             if (!res.ok) {
                 throw new Error('Failed to exchange public token');
             }
             const data = await res.json();
+            navigation.navigate('Transactions', { accessToken: data.access_token });
             Alert.alert('Success', 'Bank account linked successfully');
             console.log('Exchange public token successful:', data);
         } catch (error: any) {

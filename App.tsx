@@ -12,8 +12,12 @@ import RecurringScreen from './src/screens/RecurringScreen';
 import ReminderScreen from './src/screens/ReminderScreen';
 import { configureNotifications } from './src/utils/notification';
 import { useEffect } from 'react';
+import PlaidScreen from './src/screens/PlaidScreen';
+import TransactionsScreen from './src/screens/TransactionsScreen';
+import { RootStackParamList } from './src/navigation/types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
 function AppNavigator() {
   const { user } = React.useContext(AuthContext);
   return (
@@ -31,6 +35,8 @@ function AppNavigator() {
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Recurring" component={RecurringScreen} />
           <Stack.Screen name="Reminder" component={ReminderScreen} />
+          <Stack.Screen name="Plaid" component={PlaidScreen} />
+          <Stack.Screen name="Transactions" component={TransactionsScreen} />
         </>
       )}
     </Stack.Navigator>

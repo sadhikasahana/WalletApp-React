@@ -67,3 +67,16 @@ export const getDueRecurringExpenses = async (mobile: string) => {
   const res = await fetch(`${BASE_URL}/recurring/due/${mobile}`);
   return res.json();
 }
+
+export const fetchPlaidTransactions = async (
+  accessToken: string, 
+  startDate: string, 
+  endDate: string
+) => {
+  const res = await fetch(`${BASE_URL}/plaid/transactions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ access_token: accessToken, start_date: startDate, end_date: endDate }),
+  });
+  return res.json();
+}

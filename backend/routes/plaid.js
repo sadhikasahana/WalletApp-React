@@ -37,4 +37,14 @@ router.get('/transactions', async (req, res) => {
     }
 });
 
+router.post('/transactions', async (req, res) => {
+    const { access_token, start_date, end_date } = req.body;
+    try {
+        const response = await plaidClient.getTransactions(access_token, start_date, end_date);
+        res.json(response);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;
